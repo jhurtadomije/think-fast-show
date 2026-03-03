@@ -3,7 +3,7 @@ import Navbar from '@/components/navbar';
 
 export const metadata = {
     title: 'Think-Fast-Show - Live Improvised Theatre',
-    description: 'Design AI assistants that research, plan, and execute tasks — all powered by your prompts.',
+    description: 'Think Fast is a high-energy live improvised theatre show. Fast thinking, fearless comedy, and unforgettable unscripted moments. Every performance is completely improvised, driven by audience suggestions.',
     appleWebApp: {
         title: 'Think-Fast-Show',
     },
