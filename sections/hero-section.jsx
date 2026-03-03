@@ -1,75 +1,44 @@
-import { PlayCircleIcon } from "lucide-react";
+"use client";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
+  return (
+    <section
+      id="top"
+      className="relative w-full h-[115vh] overflow-hidden"
+    >
+      {/* Imagen fondo */}
+      <img
+        src="/assets/hero-stage.jpeg"
+        alt="Think Fast Show on stage"
+        className="absolute inset-0 w-full h-full object-cover object-[center_37%]"
+      />
 
-    return (
-        <>
-            <motion.div className="fixed inset-0 overflow-hidden -z-20 pointer-events-none"
-                initial={{ opacity: 0.4 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-            >
-                <div className="absolute rounded-full top-80 left-2/5 -translate-x-1/2 size-130 bg-[#D10A8A] blur-[100px]" />
-                <div className="absolute rounded-full top-80 right-0 -translate-x-1/2 size-130 bg-[#2E08CF] blur-[100px]" />
-                <div className="absolute rounded-full top-0 left-1/2 -translate-x-1/2 size-130 bg-[#F26A06] blur-[100px]" />
-            </motion.div>
-            <motion.section className="flex flex-col items-center">
-  {/* Badge superior */}
-  <motion.div
-    className="flex items-center gap-3 mt-32"
-    initial={{ y: -20, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.2, type: "spring", stiffness: 320, damping: 70, mass: 1 }}
-  >
-    <p>TITULO H5 · EMPRESA INTERNACIONAL</p>
-    <button className="btn glass py-1 px-3 text-xs">
-      Conócenos
-    </button>
-  </motion.div>
+      {/* Degradado inferior para legibilidad */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
 
-  {/* Título principal */}
-  <motion.h1
-    className="text-center text-4xl/13 md:text-6xl/19 mt-4 font-semibold tracking-tight max-w-3xl"
-    initial={{ y: 50, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ type: "spring", stiffness: 240, damping: 70, mass: 1 }}
-  >
-    TITULO H1 PRINCIPAL DE LA EMPRESA
-  </motion.h1>
+      {/* Contenido superpuesto abajo */}
+      <motion.div
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 text-center px-6 max-w-4xl z-10"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <p className="uppercase tracking-widest text-sm text-[#E6007E] mb-6">
+          Live Improvised Theatre · Dublin
+        </p>
 
-  {/* Subtítulo */}
-  <motion.p
-    className="text-center text-gray-100 text-base/7 max-w-md mt-6"
-    initial={{ y: 50, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.2, type: "spring", stiffness: 320, damping: 70, mass: 1 }}
-  >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </motion.p>
+        <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white">
+          Fast Thinking. <br />
+          Fearless Comedy. <br />
+          Unscripted Moments.
+        </h1>
 
-  {/* Botones */}
-  <motion.div
-    className="flex flex-col md:flex-row max-md:w-full items-center gap-4 md:gap-3 mt-6"
-    initial={{ y: 50, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ type: "spring", stiffness: 320, damping: 70, mass: 1 }}
-  >
-    <button className="btn max-md:w-full glass py-3">
-      Ver Proyecto
-    </button>
-    <button className="btn max-md:w-full glass flex items-center justify-center gap-2 py-3">
-      <PlayCircleIcon className="size-4.5" />
-      Presentación
-    </button>
-  </motion.div>
-</motion.section>
-        </>
-    );
+        <p className="mt-6 text-gray-300 max-w-2xl mx-auto text-lg">
+          Every performance is completely improvised. The audience gives the
+          ideas — we create the show live on stage.
+        </p>
+      </motion.div>
+    </section>
+  );
 }

@@ -1,81 +1,89 @@
+"use client";
 import SectionTitle from "@/components/section-title";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 
 export default function Testimonials() {
 
-    const ref = useRef([]);
+  const ref = useRef([]);
 
-    const data = [
-        {
-            review: "The proposed market entry strategy demonstrates strong potential for sustainable growth within the targeted European regions.",
-            name: "Industry Expert",
-            about: "International Business Consultant",
-            image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
-        },
-        {
-            review: "The competitive positioning analysis highlights clear differentiation and a realistic expansion framework.",
-            name: "Market Analyst",
-            about: "Strategic Research Specialist",
-            image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
-        },
-        {
-            review: "Customer validation results indicate strong interest and a viable demand forecast within the identified segments.",
-            name: "Target Customer Representative",
-            about: "Survey Participant",
-            image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60",
-        },
-        {
-            review: "The structured methodology ensures a data-driven approach aligned with international market standards.",
-            name: "Academic Reviewer",
-            about: "Business Strategy Lecturer",
-            image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60",
-        },
-    ];
+  const data = [
+    {
+      review:
+        "I haven't laughed this much in years. The audience suggestions made every scene completely unpredictable and hilarious.",
+      name: "Emma O'Connor",
+      about: "Audience Member · Dublin",
+      image:
+        "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
+    },
+    {
+      review:
+        "We booked Think Fast Show for our company event and the team is still talking about it. Engaging, clever and incredibly fast-paced.",
+      name: "James Murphy",
+      about: "HR Manager · Corporate Client",
+      image:
+        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
+    },
+    {
+      review:
+        "The performers are insanely talented. The way they build entire stories from one random word is just mind-blowing.",
+      name: "Sarah Walsh",
+      about: "Theatre Attendee",
+      image:
+        "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60",
+    },
+    {
+      review:
+        "Our team workshop was energetic, interactive and surprisingly insightful. A brilliant mix of fun and learning.",
+      name: "Michael Byrne",
+      about: "Event Organiser",
+      image:
+        "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60",
+    },
+  ];
 
-    return (
-        <section className="mt-32 flex flex-col items-center">
-            <SectionTitle
-                title="Market Validation & Research Insights"
-                description="Key findings, expert evaluations and representative feedback supporting the project’s strategic direction."
-            />
+  return (
+    <section id="validation" className="mt-40 flex flex-col items-center px-6">
+      <SectionTitle
+        title="What People Are Saying"
+        description="Real reactions from audiences, companies and workshop participants."
+      />
 
-            <div className='mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2'>
-                {data.map((item, index) => (
-                    <motion.div
-                        key={index}
-                        className='w-full max-w-96 space-y-5 rounded-lg glass p-5 hover:-translate-y-1'
-                        initial={{ y: 150, opacity: 0 }}
-                        ref={(el) => (ref.current[index] = el)}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            delay: index * 0.15,
-                            type: "spring",
-                            stiffness: 320,
-                            damping: 70,
-                            mass: 1
-                        }}
-                        onAnimationComplete={() => {
-                            const card = ref.current[index];
-                            if (card) {
-                                card.classList.add("transition", "duration-300");
-                            }
-                        }}
-                    >
-                        <div className='flex items-center justify-between'>
-                            <p className="font-medium">{item.about}</p>
-                            <img className='size-10 rounded-full' src={item.image} alt={item.name} />
-                        </div>
-
-                        <p className='line-clamp-3'>“{item.review}”</p>
-
-                        <p className='text-gray-300'>
-                            - {item.name}
-                        </p>
-                    </motion.div>
-                ))}
+      <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 max-w-5xl">
+        {data.map((item, index) => (
+          <motion.div
+            key={index}
+            className="w-full space-y-6 rounded-2xl bg-black border border-white/10 p-8 hover:border-[#E6007E] transition-all duration-300"
+            initial={{ y: 120, opacity: 0 }}
+            ref={(el) => (ref.current[index] = el)}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              delay: index * 0.2,
+              type: "spring",
+              stiffness: 280,
+              damping: 60,
+            }}
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-sm text-gray-400">{item.about}</p>
+              <img
+                className="size-12 rounded-full border border-white/20"
+                src={item.image}
+                alt={item.name}
+              />
             </div>
-        </section>
-    );
+
+            <p className="text-gray-300 leading-relaxed text-lg">
+              “{item.review}”
+            </p>
+
+            <p className="text-[#E6007E] font-medium">
+              — {item.name}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
 }

@@ -1,19 +1,23 @@
-'use client';
+import HeroSection from "@/sections/hero-section";
+import AboutSection from "@/sections/about-section";
+import TeamSection from "@/sections/team-section";
+import WorkflowSteps from "@/sections/workflow-steps";
+import Features from "@/sections/features";
+import Testimonials from "@/sections/testimonials";
+import FaqSection from "@/sections/faq-section";
+import CallToAction from "@/sections/call-to-action";
 
-import CallToAction from '@/sections/call-to-action';
-import Features from '@/sections/features';
-import HeroSection from '@/sections/hero-section';
-import Testimonials from '@/sections/testimonials';
-import WorkflowSteps from '@/sections/workflow-steps';
-
-export default function Page() {
-    return (
-        <main className='px-4'>
-            <HeroSection />
-            <Features />
-            <WorkflowSteps />
-            <Testimonials />
-            <CallToAction />
-        </main>
-    );
+export default function Home() {
+  return (
+    <>
+      <HeroSection />
+      <AboutSection />
+      <TeamSection />
+      <WorkflowSteps />
+      <Features />
+      <Testimonials />
+      <FaqSection />
+      <CallToAction />
+    </>
+  );
 }

@@ -1,19 +1,71 @@
 @import "tailwindcss";
 
+/* ===============================
+   THINK FAST SHOW – BRAND SYSTEM
+   =============================== */
+
 @theme {
     --font-sans: 'Poppins', sans-serif;
+
+    /* Brand Colors */
+    --tfs-bg: #0B0B0F;
+    --tfs-pink: #E6007E;
+    --tfs-pink-dark: #B80063;
+    --tfs-pink-soft: #FF4DA6;
 }
+
+/* ===============================
+   GLOBAL BACKGROUND
+   =============================== */
 
 body {
-    @apply bg-black text-white text-sm antialiased;
+    @apply text-white text-sm antialiased;
+
+    background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(230, 0, 126, 0.18), transparent 60%),
+        radial-gradient(900px 600px at 85% 25%, rgba(184, 0, 99, 0.16), transparent 55%),
+        radial-gradient(700px 500px at 50% 95%, rgba(255, 77, 166, 0.10), transparent 60%),
+        var(--tfs-bg);
 }
 
+/* ===============================
+   COMPONENTS
+   =============================== */
+
 @layer components {
+
+    /* Glass effect adapted to dark + pink identity */
     .glass {
-        @apply bg-white/10 border border-white/20;
+        @apply backdrop-blur-xl border;
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(230, 0, 126, 0.25);
     }
 
-    .btn {
-        @apply cursor-pointer rounded-full px-8 py-2.5 font-medium text-white transition hover:opacity-90 active:scale-98;
+    /* Primary button */
+    .btn-primary {
+        @apply cursor-pointer rounded-full px-8 py-2.5 font-semibold text-white transition active:scale-98;
+        background: linear-gradient(135deg, var(--tfs-pink), var(--tfs-pink-dark));
     }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, var(--tfs-pink-dark), var(--tfs-pink));
+    }
+
+    /* Secondary button */
+    .btn-outline {
+        @apply cursor-pointer rounded-full px-8 py-2.5 font-medium transition active:scale-98;
+        border: 1px solid var(--tfs-pink);
+        color: var(--tfs-pink);
+        background: transparent;
+    }
+
+    .btn-outline:hover {
+        background: var(--tfs-pink);
+        color: white;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.7;
+}
 }

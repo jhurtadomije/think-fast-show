@@ -1,105 +1,118 @@
+"use client";
 import SectionTitle from "@/components/section-title";
-import { CheckIcon, CrownIcon, RocketIcon, ZapIcon } from "lucide-react";
+import { CheckIcon, SparklesIcon, UsersIcon, StarIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 
 export default function PricingPlans() {
-    const ref = useRef([]);
-    const data = [
-        {
-            icon: RocketIcon,
-            title: 'Starter',
-            description: 'For individuals and small teams',
-            price: '$19',
-            buttonText: 'Get Started',
-            features: [
-                'Up to 10 projects',
-                '10 AI tasks/month',
-                'Basic text generation',
-                'Simple chatbot access',
-                'Email support only',
-                'Community resources'
-            ],
-        },
-        {
-            icon: ZapIcon,
-            title: 'Professional',
-            description: 'For growing teams and startups',
-            price: '$49',
-            mostPopular: true,
-            buttonText: 'Upgrade Now',
-            features: [
-                'Unlimited AI tasks',
-                'API integration',
-                'Text & image outputs',
-                'Priority chat & email support',
-                'Detailed analytics',
-                'Team collaboration'
-            ],
-        },
-        {
-            icon: CrownIcon,
-            title: 'Enterprise',
-            description: 'For enterprises and agencies',
-            price: '$149',
-            buttonText: 'Contact Sales',
-            features: [
-                'Custom AI models',
-                'Team access control',
-                'Dedicated account manager',
-                'Secure private API',
-                'SLA uptime guarantee',
-                '24/7 premium support'
-            ],
-        },
-    ];
+  const ref = useRef([]);
 
-    return (
-        <section className="mt-32">
-            <SectionTitle
-                title="Our Pricing Plans"
-                description="A visual collection of our most recent works - each piece crafted with intention, emotion and style."
-            />
+  const data = [
+    {
+      icon: SparklesIcon,
+      title: "Theatre Show",
+      description:
+        "A high-energy live improvised performance for theatres and live audiences.",
+      buttonText: "Book This Show",
+      features: [
+        "Audience-driven scenes",
+        "Fast-paced improvisation",
+        "Live interactive format",
+        "Suitable for all audiences",
+      ],
+    },
+    {
+      icon: UsersIcon,
+      title: "Corporate Experience",
+      mostPopular: true,
+      description:
+        "Interactive impro shows and workshops tailored for corporate events and team building.",
+      buttonText: "Request Proposal",
+      features: [
+        "Team engagement",
+        "Communication & creativity focus",
+        "Customised content",
+        "On-site or theatre venue",
+      ],
+    },
+    {
+      icon: StarIcon,
+      title: "Workshops & Masterclasses",
+      description:
+        "Hands-on training sessions exploring confidence, spontaneity and storytelling.",
+      buttonText: "Enquire Now",
+      features: [
+        "Practical exercises",
+        "Confidence building",
+        "Public speaking skills",
+        "Creativity development",
+      ],
+    },
+  ];
 
-            <div className='mt-12 flex flex-wrap items-center justify-center gap-6'>
-                {data.map((item, index) => (
-                    <motion.div key={index} className='group w-full max-w-80 glass p-6 rounded-xl hover:-translate-y-0.5'
-                        initial={{ y: 150, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: `${index * 0.15}`, type: "spring", stiffness: 320, damping: 70, mass: 1 }}
-                        ref={(el) => (ref.current[index] = el)}
-                        onAnimationComplete={() => {
-                            const card = ref.current[index];
-                            if (card) {
-                                card.classList.add("transition", "duration-300");
-                            }
-                        }}
-                    >
-                        <div className="flex items-center w-max ml-auto text-xs gap-2 glass rounded-full px-3 py-1">
-                            <item.icon className='size-3.5' />
-                            <span>{item.title}</span>
-                        </div>
-                        <h3 className='mt-4 text-2xl font-semibold'>
-                            {item.price} <span className='text-sm font-normal'>/month</span>
-                        </h3>
-                        <p className='text-gray-200 mt-3'>{item.description}</p>
-                        <button className={`mt-7 rounded-md w-full btn ${item.mostPopular ? 'bg-white text-gray-800' : 'glass'}`}>
-                            {item.buttonText}
-                        </button>
-                        <div className='mt-6 flex flex-col'>
-                            {item.features.map((feature, index) => (
-                                <div key={index} className='flex items-center gap-2 py-2'>
-                                    <div className='rounded-full glass border-0 p-1'>
-                                        <CheckIcon className='size-3 text-white' strokeWidth={3} />
-                                    </div>
-                                    <p>{feature}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-                ))}
+  return (
+    <section id="validation" className="mt-40 px-6">
+      <SectionTitle
+        title="Show Packages"
+        description="Flexible performance formats designed for theatres, events and organisations."
+      />
+
+      <div className="mt-16 flex flex-wrap items-center justify-center gap-10">
+        {data.map((item, index) => (
+          <motion.div
+            key={index}
+            className={`group w-full max-w-sm p-8 rounded-3xl border ${
+              item.mostPopular
+                ? "border-[#E6007E] bg-black"
+                : "border-white/10 bg-black"
+            } hover:border-[#E6007E] transition-all duration-300`}
+            initial={{ y: 120, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              delay: index * 0.2,
+              type: "spring",
+              stiffness: 280,
+              damping: 60,
+            }}
+            ref={(el) => (ref.current[index] = el)}
+          >
+            {/* Badge */}
+            <div className="flex items-center gap-2 text-[#E6007E] mb-6">
+              <item.icon className="size-5" />
+              <span className="uppercase tracking-wider text-sm font-semibold">
+                {item.title}
+              </span>
             </div>
-        </section>
-    );
+
+            <p className="text-gray-400 mb-8 leading-relaxed">
+              {item.description}
+            </p>
+
+            <button
+              className={`w-full py-3 rounded-full font-medium transition ${
+                item.mostPopular
+                  ? "bg-[#E6007E] text-white hover:opacity-90"
+                  : "border border-white/20 hover:border-[#E6007E]"
+              }`}
+            >
+              {item.buttonText}
+            </button>
+
+            <div className="mt-8 space-y-3">
+              {item.features.map((feature, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <CheckIcon
+                    className="size-4 text-[#E6007E]"
+                    strokeWidth={3}
+                  />
+                  <p className="text-gray-400">{feature}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
 }

@@ -1,68 +1,75 @@
 'use client';
-import { LinkedinIcon } from "lucide-react";
+import { LinkedinIcon, InstagramIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Footer() {
 
-    const links = [
-        { name: 'About the Project', href: '#top' },
-        { name: 'Services', href: '#services' },
-        { name: 'Methodology', href: '#methodology' },
-        { name: 'Market Validation', href: '#validation' },
-        { name: 'Contact', href: '#contact' },
-    ];
+  const links = [
+    { name: 'Home', href: '#top' },
+    { name: 'Shows', href: '#services' },
+    { name: 'How It Works', href: '#methodology' },
+    { name: 'Reviews', href: '#validation' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
-    return (
-        <motion.footer
-            id="contact"
-            className="flex flex-col items-center px-4 md:px-16 lg:px-24 justify-center w-full pt-16 mt-40 glass border-0"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+  return (
+    <motion.footer
+      id="contact"
+      className="flex flex-col items-center px-6 md:px-16 justify-center w-full pt-20 mt-40 bg-black border-t border-white/10"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+
+      {/* Logo */}
+      <a href="#top" className="mb-8">
+        <Image
+          src="/assets/logo.svg"
+          alt="Think Fast Show"
+          width={220}
+          height={100}
+          className="h-54 w-auto object-contain"
+        />
+      </a>
+
+      {/* Navigation Links */}
+      <div className="flex flex-wrap items-center justify-center gap-8 mb-10">
+        {links.map((link, index) => (
+          <Link
+            key={index}
+            href={link.href}
+            className="transition hover:text-[#E6007E]"
+          >
+            {link.name}
+          </Link>
+        ))}
+      </div>
+
+      {/* Social */}
+      <div className="flex items-center gap-6 mb-8">
+        <a
+          href="#"
+          className="text-gray-400 hover:text-[#E6007E] transition-all duration-300"
         >
+          <InstagramIcon />
+        </a>
 
-            {/* Logo 
-            <a href="#top">
-                <Image
-                    src='/assets/logo.svg'
-                    alt='Company logo'
-                    className='h-8.5 w-auto'
-                    width={205}
-                    height={48}
-                />
-            </a>
-            */}
-            <h1 className="text-xl md:text-2xl font-semibold tracking-wider text-white">
-  GLOBAL<span className="text-orange-500">STRATEGY</span>
-</h1>
+        <a
+          href="#"
+          className="text-gray-400 hover:text-[#E6007E] transition-all duration-300"
+        >
+          <LinkedinIcon />
+        </a>
+      </div>
 
-            {/* Navigation Links */}
-            <div className="flex flex-wrap items-center justify-center gap-8 py-8">
-                {links.map((link, index) => (
-                    <Link key={index} href={link.href} className='transition hover:text-gray-300'>
-                        {link.name}
-                    </Link>
-                ))}
-            </div>
+      <div className="w-full border-t border-white/10 pt-6 text-sm text-gray-400 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p>Improvised Theatre · Corporate Events · Live Shows</p>
+        <p>© 2026 Think Fast Show. All rights reserved.</p>
+      </div>
 
-            {/* Social */}
-            <div className="flex items-center gap-6 pb-6">
-                <a href="#" className="hover:-translate-y-0.5 text-gray-200 transition-all duration-300">
-                    <LinkedinIcon />
-                </a>
-            </div>
-
-            <hr className="w-full border-white/20 mt-6" />
-
-            {/* Copyright */}
-            <div className="flex flex-col md:flex-row items-center w-full justify-between gap-4 py-4 text-sm text-gray-300">
-                <p>International Business Strategy Project</p>
-                <p>© 2025 Project Name. All rights reserved.</p>
-            </div>
-
-        </motion.footer>
-    );
+    </motion.footer>
+  );
 }
