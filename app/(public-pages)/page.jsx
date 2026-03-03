@@ -6,6 +6,8 @@ import Features from "@/sections/features";
 import Testimonials from "@/sections/testimonials";
 import FaqSection from "@/sections/faq-section";
 import CallToAction from "@/sections/call-to-action";
+import AgendaSection from "@/sections/agenda-section";
+import LinksSection from "@/sections/links-section";
 
 export default function Home() {
   return (
@@ -15,6 +17,8 @@ export default function Home() {
       <TeamSection />
       <WorkflowSteps />
       <Features />
+      <AgendaSection />
+      <LinksSection />
       <Testimonials />
       <FaqSection />
       <CallToAction />
