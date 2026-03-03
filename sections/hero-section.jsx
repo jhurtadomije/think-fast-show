@@ -25,7 +25,7 @@ export default function HeroSection() {
         transition={{ duration: 0.8 }}
       >
         <p className="uppercase tracking-widest text-sm text-[#E6007E] mb-6">
-          Live Improvised Theatre · Dublin
+          Live Improvised Theatre
         </p>
 
         <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white">
