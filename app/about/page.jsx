@@ -52,7 +52,7 @@ const team = [
   {
     name: "Natalia Salmerón",
     role: "Actress (General management)",
-    image: "/assets/team/nata.png",
+    image: "/assets/team/Nata.png",
     position: "center 18%",
     zoom: "scale-[1.3]",
   },
