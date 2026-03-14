@@ -13,7 +13,7 @@ export default function AgendaSection() {
   return (
     <section className="mt-40 px-6">
       <SectionTitle
-        title="Event Agenda"
+        title="Show Schedule"
         description="Here’s how the evening will unfold."
       />
 

@@ -12,6 +12,7 @@ import LinksSection from "@/sections/links-section";
 export default function Home() {
   return (
     <>
+    <div id="top"> </div>
       <HeroSection />
       <AboutSection />
       <TeamSection />

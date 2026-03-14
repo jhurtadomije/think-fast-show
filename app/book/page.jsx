@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function BookPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -102,13 +103,22 @@ export default function BookPage() {
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-[#E6007E]"
               />
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-[#E6007E] hover:scale-105 transition rounded-full py-4 font-medium flex items-center justify-center"
-              >
-                {loading ? "Sending..." : "Submit Booking Request"}
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="flex-1 bg-[#E6007E] hover:scale-105 transition rounded-full py-4 font-medium flex items-center justify-center"
+                >
+                  {loading ? "Sending..." : "Submit Booking Request"}
+                </button>
+
+                <Link
+                  href="/"
+                  className="flex-1 border border-white/20 rounded-full py-4 text-center hover:bg-white/10 transition"
+                >
+                  Back to Home
+                </Link>
+              </div>
             </motion.form>
           </>
         ) : (
